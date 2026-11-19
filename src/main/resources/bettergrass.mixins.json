@@ -1,14 +1,14 @@
 {
   "required": true,
   "minVersion": "0.8",
-  "package": "%s.mixin",
+  "package": "io.github.whoisjeb.bettergrass.mixin",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
-    "ExampleMixin"
   ],
   "server": [
   ],
   "client": [
+    "BlockRenderManagerMixin"
   ],
   "injectors": {
     "defaultRequire": 1
