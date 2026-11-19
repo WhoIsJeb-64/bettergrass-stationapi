@@ -20,6 +20,15 @@
     "stationapi:event_bus_client": [
     ],
     "stationapi:event_bus_server": [
+    ],
+    "gcapi3": [
+      "io.github.whoisjeb.bettergrass.config.Config"
+    ],
+    "gcapi3:factory_provider": [
+      "io.github.whoisjeb.bettergrass.config.ConfigFactories"
+    ],
+    "gcapi3:presave": [
+      "io.github.whoisjeb.bettergrass.config.ConfigChangedListener"
     ]
   },
   "mixins": [
