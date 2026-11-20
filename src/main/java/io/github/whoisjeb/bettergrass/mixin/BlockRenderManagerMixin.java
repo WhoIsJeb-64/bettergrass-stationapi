@@ -41,28 +41,56 @@ public class BlockRenderManagerMixin {
     @ModifyArgs(
             method="renderSmooth",
             at = @At(value = "INVOKE", target = "Lnet/minecraft/client/render/block/BlockRenderManager;renderEastFace(Lnet/minecraft/block/Block;DDDI)V"))
-    private void setEastTexture(Args args) {
+    private void setEastTextureSmoothLight(Args args) {
+        args.set(4, resolveTexture(args.get(1), args.get(2), (double) args.get(3) - 1.0D, args.get(4)));
+    }
+
+    @ModifyArgs(
+            method="renderFlat",
+            at = @At(value = "INVOKE", target = "Lnet/minecraft/client/render/block/BlockRenderManager;renderEastFace(Lnet/minecraft/block/Block;DDDI)V"))
+    private void setEastTextureNormalLight(Args args) {
         args.set(4, resolveTexture(args.get(1), args.get(2), (double) args.get(3) - 1.0D, args.get(4)));
     }
 
     @ModifyArgs(
             method="renderSmooth",
             at = @At(value = "INVOKE", target = "Lnet/minecraft/client/render/block/BlockRenderManager;renderWestFace(Lnet/minecraft/block/Block;DDDI)V"))
-    private void setWestTexture(Args args) {
+    private void setWestTextureSmoothLight(Args args) {
+        args.set(4, resolveTexture(args.get(1), args.get(2), (double) args.get(3) + 1.0D, args.get(4)));
+    }
+
+    @ModifyArgs(
+            method="renderFlat",
+            at = @At(value = "INVOKE", target = "Lnet/minecraft/client/render/block/BlockRenderManager;renderWestFace(Lnet/minecraft/block/Block;DDDI)V"))
+    private void setWestTextureNormalLight(Args args) {
         args.set(4, resolveTexture(args.get(1), args.get(2), (double) args.get(3) + 1.0D, args.get(4)));
     }
 
     @ModifyArgs(
             method="renderSmooth",
             at = @At(value = "INVOKE", target = "Lnet/minecraft/client/render/block/BlockRenderManager;renderNorthFace(Lnet/minecraft/block/Block;DDDI)V"))
-    private void setNorthTexture(Args args) {
+    private void setNorthTextureSmoothLight(Args args) {
+        args.set(4, resolveTexture((double) args.get(1) - 1.0D, args.get(2), args.get(3), args.get(4)));
+    }
+
+    @ModifyArgs(
+            method="renderFlat",
+            at = @At(value = "INVOKE", target = "Lnet/minecraft/client/render/block/BlockRenderManager;renderNorthFace(Lnet/minecraft/block/Block;DDDI)V"))
+    private void setNorthTextureNormalLight(Args args) {
         args.set(4, resolveTexture((double) args.get(1) - 1.0D, args.get(2), args.get(3), args.get(4)));
     }
 
     @ModifyArgs(
             method="renderSmooth",
             at = @At(value = "INVOKE", target = "Lnet/minecraft/client/render/block/BlockRenderManager;renderSouthFace(Lnet/minecraft/block/Block;DDDI)V"))
-    private void setSouthTexture(Args args) {
+    private void setSouthTextureSmoothLight(Args args) {
+        args.set(4, resolveTexture((double) args.get(1) + 1.0D, args.get(2), args.get(3), args.get(4)));
+    }
+
+    @ModifyArgs(
+            method="renderFlat",
+            at = @At(value = "INVOKE", target = "Lnet/minecraft/client/render/block/BlockRenderManager;renderSouthFace(Lnet/minecraft/block/Block;DDDI)V"))
+    private void setSouthTextureNormalLight(Args args) {
         args.set(4, resolveTexture((double) args.get(1) + 1.0D, args.get(2), args.get(3), args.get(4)));
     }
 }
